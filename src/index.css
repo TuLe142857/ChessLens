@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 text-lg;
+  }
+
+  table {
+    @apply rounded-sm p-2 bg-neutral-700 overflow-hidden;
+  }
+
+  thead {
+    @apply bg-neutral-800;
+  }
+
+  tr {
+    @apply border-b border-b-gray-400;
+  }
+
+  th {
+    @apply text-left py-1 px-2 font-bold;
+  }
+
+  td {
+    @apply text-left py-1 px-2;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-slate-700 border border-slate-800 rounded-md overflow-hidden p-2;
+  }
+
+  .form {
+    @apply bg-slate-700 border border-slate-800 rounded-md overflow-hidden p-2;
+  }
+
+  .input {
+    @apply p-2  rounded-md font-semibold bg-zinc-500/50 text-slate-100;
+  }
+
+  .input:hover {
+    @apply outline-1 outline-yellow-400;
+  }
+
+  .input:focus-within,
+  .input:focus {
+    @apply bg-zinc-400/50 outline-1 outline-yellow-400;
+  }
+
+  .input::placeholder {
+    @apply text-slate-400;
+  }
+
+  .btn {
+    @apply rounded-md p-2 font-semibold text-black bg-yellow-400;
+  }
+
+  .btn:disabled {
+    @apply bg-yellow-600 cursor-not-allowed;
+  }
+
+  .header {
+    @apply border-b border-gray-500 bg-gray-800 text-gray-200 text-lg;
+  }
+
+  .footer {
+    @apply border-t border-gray-500 bg-gray-800 text-gray-400 text-sm;
+  }
+
+  .skeleton {
+    @apply rounded-full bg-slate-300 animate-pulse;
+  }
+
+  .recap {
+    @apply w-screen h-screen;
+  }
+}
