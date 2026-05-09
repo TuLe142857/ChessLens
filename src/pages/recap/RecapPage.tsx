@@ -8,11 +8,11 @@ import {
 import StoryProgressBar from './components/StoryProgressBar.tsx';
 import { usePlayerProfile, useGamesByYear } from '@/hooks/useChess.ts';
 
-import { makeRecapData } from '@/utils/recap.ts';
+import { makeRecapData } from './utils.ts';
 
-import type { RecapData } from '@/utils/recap.ts';
+import type { RecapData } from './utils.ts';
 
-import type { RecapSlideDefinition } from '@/pages/RecapPage/type.ts';
+import type { RecapSlideDefinition } from './type.ts';
 
 // slides
 import {
@@ -28,6 +28,7 @@ import {
   streakSlide,
   endSlide,
 } from './slideConfig.ts';
+
 import type { Game } from '@/types/chess.ts';
 
 const ALL_SLIDES: RecapSlideDefinition[] = [
@@ -45,7 +46,7 @@ const ALL_SLIDES: RecapSlideDefinition[] = [
 ];
 
 const RecapPage = () => {
-  const { username, year } = useParams<{ username: string; year: string }>();
+  const { username, year } = useParams<{ username: string; year: string }>() as { username: string; year: string };
 
   const { data: playerProfile } = usePlayerProfile(username);
 

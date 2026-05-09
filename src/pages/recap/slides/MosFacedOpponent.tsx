@@ -1,4 +1,4 @@
-// import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+// import type { RecapSlideProps } from '@/pages/recap/type.ts';
 //
 // const MostFacedOpponent = ({ data, className = '' }: RecapSlideProps) => {
 //   return (
@@ -12,7 +12,7 @@
 //
 // export default MostFacedOpponent;
 
-import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+import type { RecapSlideProps } from '../type.ts';
 
 const MostFacedOpponent = ({ data, className = '' }: RecapSlideProps) => {
   const opponent = data.opponent.mostFaced;

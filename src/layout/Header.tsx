@@ -1,4 +1,4 @@
-import { House as HomeIcon, ChessKnight as AppIcon } from 'lucide-react';
+import { ChessKnight as AppIcon } from 'lucide-react';
 import GithubIcon from '../assets/github_white.svg';
 import { Link } from 'react-router-dom';
 

@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router';
 
 import Layout from './layout/Layout.tsx';
 import HomePage from './pages/HomePage.tsx';
-import PlayerPage from './pages/PlayerPage/PlayerPage.tsx';
-import RecapPage from './pages/RecapPage/RecapPage.tsx';
+import PlayerPage from './pages/player/PlayerPage.tsx';
+import RecapPage from './pages/recap/RecapPage.tsx';
 
 import PageNotFound from './components/errors/PageNotFound.tsx';
 const App = () => {

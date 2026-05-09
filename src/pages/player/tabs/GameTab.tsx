@@ -83,7 +83,7 @@ const GameTab = ({ username }: { username: string }) => {
   const filteredGames = useMemo(
     () =>
       allGames.filter((game: Game) => {
-        const [playerColor, opponentColor] =
+        const [playerColor] =
           game.white.username.toLowerCase() === username.toLowerCase()
             ? ['white', 'black']
             : ['black', 'white'];
@@ -131,7 +131,7 @@ const GameTab = ({ username }: { username: string }) => {
     setPagination((prev) => ({ ...prev, page: 1 }));
   }, [filter]);
 
-  const handleResetFilter = () => {};
+  // const handleResetFilter = () => {};
 
   const handleNextPage = () => {
     const maxPage = Math.ceil(filteredGames.length / pagination.perPage);

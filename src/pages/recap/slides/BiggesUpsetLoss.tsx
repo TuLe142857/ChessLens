@@ -1,4 +1,4 @@
-// import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+// import type { RecapSlideProps } from '@/pages/recap/type.ts';
 //
 // const BiggestUpsetLoss = ({ data, className = '' }: RecapSlideProps) => {
 //   return (
@@ -12,7 +12,7 @@
 //
 // export default BiggestUpsetLoss;
 
-import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+import type { RecapSlideProps } from '../type.ts';
 
 const BiggestUpsetLoss = ({ data, className = '' }: RecapSlideProps) => {
   const upsetLoss = data.opponent.biggestUpsetLoss;

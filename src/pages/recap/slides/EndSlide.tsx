@@ -1,4 +1,4 @@
-import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+import type { RecapSlideProps } from '../type.ts';
 
 const getBestRating = (data: RecapSlideProps['data']) => {
   const ratings = [

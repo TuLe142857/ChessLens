@@ -1,0 +1,33 @@
+name: Deploy Production
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Deploy-Review:
+    runs-on: 
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+    
+    - name: Install Vercel
+      run: npm install -g vercel@latest
+
+    - name: Pull Environment
+      run: vercel pull -y --environment=production --token=${{ secrets.VERCEL_TOKEN}}
+
+    - name: Build project
+      run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN}}
+
+    - name: Deploy preview
+      run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN}}

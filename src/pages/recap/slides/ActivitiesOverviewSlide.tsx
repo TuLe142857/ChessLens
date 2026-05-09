@@ -1,4 +1,4 @@
-// import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+// import type { RecapSlideProps } from '@/pages/recap/type.ts';
 //
 // const ActivitiesOverviewSlide = ({ data, className = '' }: RecapSlideProps) => {
 //   return (
@@ -14,7 +14,7 @@
 //
 // export default ActivitiesOverviewSlide;
 
-import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+import type { RecapSlideProps } from '../type.ts';
 
 const ActivitiesOverviewSlide = ({ data, className = '' }: RecapSlideProps) => {
   return (

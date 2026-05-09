@@ -1,5 +1,4 @@
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import {
   LayoutDashboard as OverviewIcon,
   ChessPawn as GameIcon,
@@ -23,6 +22,8 @@ import OverviewTab from './tabs/OverviewTab.tsx';
 import GameTab from './tabs/GameTab.tsx';
 import StatisticTab from './tabs/StatisticTab.tsx';
 import ErrorCard from '@/components/errors/ErrorCard.tsx';
+
+
 const Tabs: TabItem[] = [
   {
     id: 'overview',
@@ -41,8 +42,11 @@ const Tabs: TabItem[] = [
   },
 ];
 
+const VALID_TABS = ['overview', 'stats', 'games'] as const;
+type TabId = typeof VALID_TABS[number];
+
 const PlayerPage = () => {
-  const { username } = useParams<{ username: string }>();
+  const { username } = useParams<{ username: string }>() as {username: string};
 
   // player data
   const {
@@ -59,18 +63,13 @@ const PlayerPage = () => {
 
   // tabs
   const [searchParams, setSearchParams] = useSearchParams();
-  const [activeTab, setActiveTab] = useState<string>(
-    searchParams.get('tab') || 'overview'
-  );
+  const tab = searchParams.get('tab');
+  const activeTab: TabId = VALID_TABS.includes(tab as TabId) ? (tab as TabId) : 'overview';
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setActiveTab((prev) => searchParams.get('tab') ?? prev);
-  }, [searchParams]);
 
   const handleTabChange = (id: string) => {
-    setActiveTab(id);
     const params = new URLSearchParams(searchParams);
     params.set('tab', id);
     setSearchParams(params);
@@ -81,25 +80,27 @@ const PlayerPage = () => {
   }
 
   if (isProfileError) {
-    const response = profileError?.response;
-    const msg =
-      response?.status === 404
-        ? 'User not found'
-        : profileError?.response?.status ||
-          profileError?.message ||
-          'Something went wrong, please try again.';
-    const onRetry =
-      response?.status === 404
-        ? undefined
-        : () => {
-            refetchProfile();
-          };
+    let msg;
+    let onRetry;
+    if (axios.isAxiosError(profileError)) {
+      if (profileError.response?.status === 404){
+        msg = "User Not Found";
+      }else{
+        msg = profileError.response?.data?.message || profileError.message || 'Something went wrong, please try again.';
+        onRetry = () => refetchProfile();
+      }
+    }
+    else {
+      msg = 'Something went wrong, please try again.'
+      onRetry = () => refetchProfile();
+    }
     return (
-      <ErrorCard
-        message={msg}
-        onRetry={onRetry}
-        className="self-center max-w-200"
-      />
+      <div className="flex items-center justify-center h-full w-full">
+        <ErrorCard
+            message={msg}
+            onRetry={onRetry}
+        />
+      </div>
     );
   }
 
@@ -126,27 +127,23 @@ const PlayerPage = () => {
       {activeTab === 'games' && <GameTab username={username} />}
       {activeTab === 'stats' && <StatisticTab username={username} />}
 
-      <div
-        className={`
-          fixed bottom-5 right-5 z-50
-        `}
-      >
+      <div className={`fixed bottom-5 right-5 z-50`}>
         <div
           className={`
-          absolute -inset-1
-          bg-linear-to-r from-fuchsia-600 to-emerald-200 
-          rounded-full blur-md opacity-700 animate-pulse
-          transition-opacity duration-300`}
+            absolute -inset-1
+            bg-linear-to-r from-fuchsia-600 to-emerald-200 
+            rounded-full blur-md opacity-700 animate-pulse
+            transition-opacity duration-300`}
         ></div>
 
         <button
           className={`
             group
-              relative flex flex-row items-center 
-              rounded-full px-4 py-2 sm:px-6 sm:py-4 gap-1
-              text-white bg-slate-950/80 
-                font-bold hover:scale-105
-              `}
+            relative flex flex-row items-center 
+            rounded-full px-4 py-2 sm:px-6 sm:py-4 gap-1
+            text-white bg-slate-950/80 
+            font-bold hover:scale-105
+            `}
           onClick={() => {
             navigate(`/recap/2025/${username}`);
           }}

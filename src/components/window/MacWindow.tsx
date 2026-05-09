@@ -1,13 +1,14 @@
-// components/ui/MacWindow.tsx
+import type {ReactNode} from "react";
+
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 };
 
 const MacWindow = ({ className = '', children }: Props) => {
   return (
     <div
-      className={`flex flex-col rounded-xl overflow-hidden bg-slate-900 ${className}`}
+      className={`flex flex-col rounded-xl overflow-hidden border border-slate-800 bg-slate-900  ${className}`}
     >
       {/* Title bar */}
       <div className="flex flex-row bg-slate-800 items-center px-3 py-2 gap-2">

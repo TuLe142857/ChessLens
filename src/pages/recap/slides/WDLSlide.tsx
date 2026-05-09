@@ -1,6 +1,6 @@
-import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+import type { RecapSlideProps } from '../type.ts';
 
-import FlipCard from '@/pages/RecapPage/components/FlipCard.tsx';
+import FlipCard from '../components/FlipCard.tsx';
 
 const StatCard = ({
   label,

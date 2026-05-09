@@ -13,6 +13,7 @@ export type PlayerProfile = {
   /** UNIX timestamp */
   joined: number;
 
+  /** url to fetch country code & name */
   country: string;
 
   /** custom field, not include in chess.com public api */

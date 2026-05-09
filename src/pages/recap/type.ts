@@ -1,4 +1,4 @@
-import type { RecapData } from '@/utils/recap.ts';
+import type { RecapData } from './utils.ts';
 import type { ComponentType } from 'react';
 
 export type RecapSlideProps = {

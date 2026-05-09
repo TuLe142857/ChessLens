@@ -1,4 +1,4 @@
-// import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+// import type { RecapSlideProps } from '@/pages/recap/type.ts';
 //
 // const StreakSlide = ({ data, className = '' }: RecapSlideProps) => {
 //   return (
@@ -12,7 +12,7 @@
 //
 // export default StreakSlide;
 
-import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+import type { RecapSlideProps } from '../type.ts';
 
 const StreakCard = ({
   title,

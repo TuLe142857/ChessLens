@@ -1,6 +1,6 @@
-// import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+// import type { RecapSlideProps } from '@/pages/recap/type.ts';
 //
-// import FlipCard from '@/pages/RecapPage/components/FlipCard.tsx';
+// import FlipCard from '@/pages/recap/components/FlipCard.tsx';
 // const AccuracySlide = ({ data, className = '' }: RecapSlideProps) => {
 //   return (
 //     <div
@@ -13,9 +13,9 @@
 //
 // export default AccuracySlide;
 
-import type { RecapSlideProps } from '@/pages/RecapPage/type.ts';
+import type { RecapSlideProps } from '../type.ts';
 
-import FlipCard from '@/pages/RecapPage/components/FlipCard.tsx';
+import FlipCard from '../components/FlipCard.tsx';
 
 const AccuracyCard = ({
   title,

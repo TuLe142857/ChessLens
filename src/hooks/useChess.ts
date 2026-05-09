@@ -1,14 +1,13 @@
 import { useQuery, useQueries } from '@tanstack/react-query';
 
 import {
-  getAllGames,
   getGameArchives,
   getGamesByMonth,
   getPlayerProfile,
   getPlayerStats,
 } from '@/api/chess.com.api.ts';
 
-export const usePlayerProfile = (username?: string) =>
+export const usePlayerProfile = (username: string) =>
   useQuery({
     queryKey: ['profile', username],
     queryFn: async () => {
@@ -18,7 +17,7 @@ export const usePlayerProfile = (username?: string) =>
     enabled: !!username,
   });
 
-export const usePlayerStats = (username?: string) =>
+export const usePlayerStats = (username: string) =>
   useQuery({
     queryKey: ['stats', username],
     queryFn: async () => {
@@ -28,7 +27,7 @@ export const usePlayerStats = (username?: string) =>
     enabled: !!username,
   });
 
-export const useArchives = (username: string | undefined) =>
+export const useArchives = (username: string) =>
   useQuery({
     queryKey: ['archives', username],
     queryFn: () => getGameArchives(username!),
@@ -36,20 +35,10 @@ export const useArchives = (username: string | undefined) =>
     enabled: !!username,
   });
 
-export const useGames = (username?: string) =>
-  useQuery({
-    queryKey: ['games', username],
-    queryFn: async () => {
-      return await getAllGames(username);
-    },
-    staleTime: 60 * 60 * 1000,
-    enabled: !!username,
-  });
-
 export const useGamesByMonth = (
-  username?: string,
-  year?: number,
-  month?: number
+  username: string,
+  year: number,
+  month: number
 ) =>
   useQuery({
     queryKey: ['games', username, year, month],
@@ -57,10 +46,10 @@ export const useGamesByMonth = (
       return await getGamesByMonth(username, year, month);
     },
     staleTime: 60 * 60 * 1000,
-    enabled: !!username,
+    enabled: !!username && !!year && !!month,
   });
 
-export const useGamesByYear = (username?: string, year?: number) => {
+export const useGamesByYear = (username: string, year: number) => {
   const now = new Date();
   const thisYear = now.getFullYear();
   const thisMonth = now.getMonth() + 1;
@@ -81,7 +70,7 @@ export const useGamesByYear = (username?: string, year?: number) => {
   return useQueries({ queries });
 };
 
-export const useAllGames = (username: string | undefined) => {
+export const useAllGames = (username: string) => {
   const archiveQuery = useArchives(username);
   const archiveMonths = (archiveQuery.data?.archives ?? []).map((url) => {
     const parts = url.split('/');

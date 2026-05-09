@@ -1,17 +1,17 @@
-import type { RecapData } from '@/utils/recap.ts';
-import type { RecapSlideDefinition } from '@/pages/RecapPage/type.ts';
+import type { RecapData } from './utils.ts';
+import type { RecapSlideDefinition } from './type.ts';
 
-import WelcomeSlide from '@/pages/RecapPage/slides/WelcomeSlide.tsx';
-import ActivitiesOverviewSlide from '@/pages/RecapPage/slides/ActivitiesOverviewSlide.tsx';
-import WDLSlide from '@/pages/RecapPage/slides/WDLSlide.tsx';
-import WinRateByColorSlide from '@/pages/RecapPage/slides/WinRateByColorSlide.tsx';
-import AccuracySlide from '@/pages/RecapPage/slides/AccuracySlide.tsx';
-import RatingSlide from '@/pages/RecapPage/slides/RatingSlide.tsx';
-import StrongestBeaten from '@/pages/RecapPage/slides/StrongestBeaten.tsx';
-import BiggestUpsetLoss from '@/pages/RecapPage/slides/BiggesUpsetLoss.tsx';
-import MostFacedOpponent from '@/pages/RecapPage/slides/MosFacedOpponent.tsx';
-import StreakSlide from '@/pages/RecapPage/slides/StreakSlide.tsx';
-import EndSlide from '@/pages/RecapPage/slides/EndSlide.tsx';
+import WelcomeSlide from './slides/WelcomeSlide.tsx';
+import ActivitiesOverviewSlide from './slides/ActivitiesOverviewSlide.tsx';
+import WDLSlide from './slides/WDLSlide.tsx';
+import WinRateByColorSlide from './slides/WinRateByColorSlide.tsx';
+import AccuracySlide from './slides/AccuracySlide.tsx';
+import RatingSlide from './slides/RatingSlide.tsx';
+import StrongestBeaten from './slides/StrongestBeaten.tsx';
+import BiggestUpsetLoss from './slides/BiggesUpsetLoss.tsx';
+import MostFacedOpponent from './slides/MosFacedOpponent.tsx';
+import StreakSlide from './slides/StreakSlide.tsx';
+import EndSlide from './slides/EndSlide.tsx';
 
 export const welcomeSlide: RecapSlideDefinition = {
   id: 'welcome',
