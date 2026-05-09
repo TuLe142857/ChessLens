@@ -10,7 +10,7 @@ on:
       - master
 
 jobs:
-  Deploy-Review:
+  Deploy-Production:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
